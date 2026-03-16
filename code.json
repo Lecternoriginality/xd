@@ -1,0 +1,52 @@
+{
+  "handlers": [
+    {
+      "type": "event",
+      "position": 0,
+      "operations": [
+        {
+          "action": "player_send_message",
+          "values": [
+            {
+              "name": "messages",
+              "value": {
+                "type": "array",
+                "values": [
+                  {
+                    "type": "text",
+                    "text": "Привет, %player%!"
+                  },
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {},
+                  {}
+                ]
+              }
+            },
+            {
+              "name": "merging",
+              "value": {
+                "type": "enum",
+                "enum": "SPACES"
+              }
+            }
+          ]
+        }
+      ],
+      "event": "player_join"
+    }
+  ]
+}

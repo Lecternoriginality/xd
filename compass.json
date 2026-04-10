@@ -1,0 +1,855 @@
+{
+  "handlers": [
+    {
+      "type": "function",
+      "position": 0,
+      "operations": [
+        {
+          "action": "set_variable_value",
+          "values": [
+            {
+              "name": "variable",
+              "value": {
+                "type": "variable",
+                "variable": "final",
+                "scope": "local"
+              }
+            },
+            {
+              "name": "value",
+              "value": {
+                "type": "text",
+                "text": ""
+              }
+            }
+          ]
+        },
+        {
+          "action": "set_variable_value",
+          "values": [
+            {
+              "name": "variable",
+              "value": {
+                "type": "variable",
+                "variable": "length",
+                "scope": "local"
+              }
+            },
+            {
+              "name": "value",
+              "value": {
+                "type": "number",
+                "number": 0
+              }
+            }
+          ]
+        },
+        {
+          "action": "set_variable_value",
+          "values": [
+            {
+              "name": "variable",
+              "value": {
+                "type": "variable",
+                "variable": "needed_length",
+                "scope": "local"
+              }
+            },
+            {
+              "name": "value",
+              "value": {
+                "type": "number",
+                "number": 35
+              }
+            }
+          ]
+        },
+        {
+          "action": "set_variable_round",
+          "values": [
+            {
+              "name": "number",
+              "value": {
+                "type": "number",
+                "number": "%math(%var_local(yaw)+180)"
+              }
+            },
+            {
+              "name": "round_type",
+              "value": {
+                "type": "enum",
+                "enum": "ROUND"
+              }
+            },
+            {
+              "name": "variable",
+              "value": {
+                "type": "variable",
+                "variable": "correct_yaw",
+                "scope": "local"
+              }
+            }
+          ]
+        },
+        {
+          "action": "set_variable_value",
+          "values": [
+            {
+              "name": "variable",
+              "value": {
+                "type": "variable",
+                "variable": "snapped_yaw",
+                "scope": "local"
+              }
+            },
+            {
+              "name": "value",
+              "value": {
+                "type": "number",
+                "number": "%math(180-((%var_local(correct_yaw)-%var_local(correct_yaw)%5)+5*floor((%var_local(correct_yaw)%5)/2.5)))"
+              }
+            }
+          ]
+        },
+        {
+          "action": "set_variable_value",
+          "values": [
+            {
+              "name": "variable",
+              "value": {
+                "type": "variable",
+                "variable": "half_of_length",
+                "scope": "local"
+              }
+            },
+            {
+              "name": "value",
+              "value": {
+                "type": "number",
+                "number": "%math(floor(%var_local(needed_length)/2))"
+              }
+            }
+          ]
+        },
+        {
+          "action": "repeat_while",
+          "values": [
+            {
+              "name": "compare",
+              "value": {
+                "type": "variable",
+                "variable": "needed_length",
+                "scope": "local"
+              }
+            },
+            {
+              "name": "value",
+              "value": {
+                "type": "variable",
+                "variable": "length",
+                "scope": "local"
+              }
+            }
+          ],
+          "conditional": {
+            "action": "if_variable_less",
+            "values": [
+              {
+                "name": "compare",
+                "value": {
+                  "type": "variable",
+                  "variable": "needed_length",
+                  "scope": "local"
+                }
+              },
+              {
+                "name": "value",
+                "value": {
+                  "type": "variable",
+                  "variable": "length",
+                  "scope": "local"
+                }
+              }
+            ],
+            "is_inverted": false,
+            "operations": []
+          },
+          "is_inverted": false,
+          "operations": [
+            {
+              "action": "set_variable_warp",
+              "values": [
+                {
+                  "name": "min",
+                  "value": {
+                    "type": "number",
+                    "number": 0
+                  }
+                },
+                {
+                  "name": "max",
+                  "value": {
+                    "type": "number",
+                    "number": 360
+                  }
+                },
+                {
+                  "name": "number",
+                  "value": {
+                    "type": "number",
+                    "number": "%math(%var_local(snapped_yaw)-(%var_local(length)-%var_local(half_of_length))*5)"
+                  }
+                },
+                {
+                  "name": "variable",
+                  "value": {
+                    "type": "variable",
+                    "variable": "char",
+                    "scope": "local"
+                  }
+                }
+              ]
+            },
+            {
+              "action": "if_variable_equals",
+              "values": [
+                {
+                  "name": "compare",
+                  "value": {
+                    "type": "array",
+                    "values": [
+                      {
+                        "type": "number",
+                        "number": 180
+                      },
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {}
+                    ]
+                  }
+                },
+                {
+                  "name": "value",
+                  "value": {
+                    "type": "variable",
+                    "variable": "char",
+                    "scope": "local"
+                  }
+                }
+              ],
+              "is_inverted": false,
+              "operations": [
+                {
+                  "action": "set_variable_value",
+                  "values": [
+                    {
+                      "name": "variable",
+                      "value": {
+                        "type": "variable",
+                        "variable": "char",
+                        "scope": "local"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "value": {
+                        "type": "text",
+                        "text": "&7N"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "action": "if_variable_equals",
+              "values": [
+                {
+                  "name": "compare",
+                  "value": {
+                    "type": "array",
+                    "values": [
+                      {
+                        "type": "number",
+                        "number": 0
+                      },
+                      {
+                        "type": "number",
+                        "number": 360
+                      },
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {}
+                    ]
+                  }
+                },
+                {
+                  "name": "value",
+                  "value": {
+                    "type": "variable",
+                    "variable": "char",
+                    "scope": "local"
+                  }
+                }
+              ],
+              "is_inverted": false,
+              "operations": [
+                {
+                  "action": "set_variable_value",
+                  "values": [
+                    {
+                      "name": "variable",
+                      "value": {
+                        "type": "variable",
+                        "variable": "char",
+                        "scope": "local"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "value": {
+                        "type": "text",
+                        "text": "&7S"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "action": "if_variable_equals",
+              "values": [
+                {
+                  "name": "compare",
+                  "value": {
+                    "type": "array",
+                    "values": [
+                      {
+                        "type": "number",
+                        "number": 90
+                      },
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {}
+                    ]
+                  }
+                },
+                {
+                  "name": "value",
+                  "value": {
+                    "type": "variable",
+                    "variable": "char",
+                    "scope": "local"
+                  }
+                }
+              ],
+              "is_inverted": false,
+              "operations": [
+                {
+                  "action": "set_variable_value",
+                  "values": [
+                    {
+                      "name": "variable",
+                      "value": {
+                        "type": "variable",
+                        "variable": "char",
+                        "scope": "local"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "value": {
+                        "type": "text",
+                        "text": "&7E"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "action": "if_variable_equals",
+              "values": [
+                {
+                  "name": "compare",
+                  "value": {
+                    "type": "array",
+                    "values": [
+                      {
+                        "type": "number",
+                        "number": 270
+                      },
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {}
+                    ]
+                  }
+                },
+                {
+                  "name": "value",
+                  "value": {
+                    "type": "variable",
+                    "variable": "char",
+                    "scope": "local"
+                  }
+                }
+              ],
+              "is_inverted": false,
+              "operations": [
+                {
+                  "action": "set_variable_value",
+                  "values": [
+                    {
+                      "name": "variable",
+                      "value": {
+                        "type": "variable",
+                        "variable": "char",
+                        "scope": "local"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "value": {
+                        "type": "text",
+                        "text": "&7W"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "action": "if_variable_equals",
+              "values": [
+                {
+                  "name": "compare",
+                  "value": {
+                    "type": "array",
+                    "values": [
+                      {
+                        "type": "text",
+                        "text": "&7N"
+                      },
+                      {
+                        "type": "text",
+                        "text": "&7S"
+                      },
+                      {
+                        "type": "text",
+                        "text": "&7E"
+                      },
+                      {
+                        "type": "text",
+                        "text": "&7W"
+                      },
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {}
+                    ]
+                  }
+                },
+                {
+                  "name": "value",
+                  "value": {
+                    "type": "variable",
+                    "variable": "char",
+                    "scope": "local"
+                  }
+                }
+              ],
+              "is_inverted": true,
+              "operations": [
+                {
+                  "action": "set_variable_value",
+                  "values": [
+                    {
+                      "name": "variable",
+                      "value": {
+                        "type": "variable",
+                        "variable": "char",
+                        "scope": "local"
+                      }
+                    },
+                    {
+                      "name": "value",
+                      "value": {
+                        "type": "text",
+                        "text": "&8◦"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "action": "set_variable_text",
+              "values": [
+                {
+                  "name": "text",
+                  "value": {
+                    "type": "array",
+                    "values": [
+                      {
+                        "type": "variable",
+                        "variable": "final",
+                        "scope": "local"
+                      },
+                      {
+                        "type": "variable",
+                        "variable": "char",
+                        "scope": "local"
+                      },
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {},
+                      {}
+                    ]
+                  }
+                },
+                {
+                  "name": "merging",
+                  "value": {
+                    "type": "enum",
+                    "enum": "SPACES"
+                  }
+                },
+                {
+                  "name": "variable",
+                  "value": {
+                    "type": "variable",
+                    "variable": "final",
+                    "scope": "local"
+                  }
+                }
+              ]
+            },
+            {
+              "action": "set_variable_regex_replace_text",
+              "values": [
+                {
+                  "name": "regex",
+                  "value": {
+                    "type": "text",
+                    "text": "[sp{Z}]|&."
+                  }
+                },
+                {
+                  "name": "replacement",
+                  "value": {
+                    "type": "text",
+                    "text": ""
+                  }
+                },
+                {
+                  "name": "text",
+                  "value": {
+                    "type": "variable",
+                    "variable": "final",
+                    "scope": "local"
+                  }
+                },
+                {
+                  "name": "first",
+                  "value": {
+                    "type": "enum",
+                    "enum": "ANY"
+                  }
+                },
+                {
+                  "name": "ignore_case",
+                  "value": {
+                    "type": "enum",
+                    "enum": "FALSE"
+                  }
+                },
+                {
+                  "name": "multiline",
+                  "value": {
+                    "type": "enum",
+                    "enum": "FALSE"
+                  }
+                },
+                {
+                  "name": "literal",
+                  "value": {
+                    "type": "enum",
+                    "enum": "FALSE"
+                  }
+                },
+                {
+                  "name": "unix_lines",
+                  "value": {
+                    "type": "enum",
+                    "enum": "FALSE"
+                  }
+                },
+                {
+                  "name": "comments",
+                  "value": {
+                    "type": "enum",
+                    "enum": "FALSE"
+                  }
+                },
+                {
+                  "name": "dot_matches_all",
+                  "value": {
+                    "type": "enum",
+                    "enum": "FALSE"
+                  }
+                },
+                {
+                  "name": "cannon_eq",
+                  "value": {
+                    "type": "enum",
+                    "enum": "FALSE"
+                  }
+                },
+                {
+                  "name": "variable",
+                  "value": {
+                    "type": "variable",
+                    "variable": "jmcc.3",
+                    "scope": "local"
+                  }
+                }
+              ]
+            },
+            {
+              "action": "set_variable_text_length",
+              "values": [
+                {
+                  "name": "text",
+                  "value": {
+                    "type": "variable",
+                    "variable": "jmcc.3",
+                    "scope": "local"
+                  }
+                },
+                {
+                  "name": "variable",
+                  "value": {
+                    "type": "variable",
+                    "variable": "length",
+                    "scope": "local"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "action": "player_set_boss_bar",
+          "values": [
+            {
+              "name": "id",
+              "value": {
+                "type": "text",
+                "text": "compass"
+              }
+            },
+            {
+              "name": "title",
+              "value": {
+                "type": "variable",
+                "variable": "final",
+                "scope": "local"
+              }
+            },
+            {
+              "name": "progress",
+              "value": {
+                "type": "number",
+                "number": 0
+              }
+            },
+            {
+              "name": "color",
+              "value": {
+                "type": "enum",
+                "enum": "WHITE"
+              }
+            },
+            {
+              "name": "sky_effect",
+              "value": {
+                "type": "enum",
+                "enum": "FOG_AND_DARK_SKY"
+              }
+            },
+            {
+              "name": "style",
+              "value": {
+                "type": "enum",
+                "enum": "PROGRESS"
+              }
+            }
+          ]
+        }
+      ],
+      "is_hidden": false,
+      "name": "update_compass"
+    },
+    {
+      "type": "event",
+      "position": 1,
+      "operations": [
+        {
+          "action": "repeat_forever",
+          "values": [],
+          "is_inverted": false,
+          "operations": [
+            {
+              "action": "set_variable_value",
+              "values": [
+                {
+                  "name": "variable",
+                  "value": {
+                    "type": "variable",
+                    "variable": "yaw",
+                    "scope": "local"
+                  }
+                },
+                {
+                  "name": "value",
+                  "value": {
+                    "type": "game_value",
+                    "game_value": "yaw",
+                    "selection": "{\"type\":\"default\"}"
+                  }
+                }
+              ]
+            },
+            {
+              "action": "call_function",
+              "values": [
+                {
+                  "name": "function_name",
+                  "value": {
+                    "type": "text",
+                    "text": "update_compass"
+                  }
+                }
+              ]
+            },
+            {
+              "action": "control_wait",
+              "values": [
+                {
+                  "name": "duration",
+                  "value": {
+                    "type": "number",
+                    "number": 1
+                  }
+                },
+                {
+                  "name": "time_unit",
+                  "value": {
+                    "type": "enum",
+                    "enum": "TICKS"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "event": "player_join"
+    }
+  ]
+}
